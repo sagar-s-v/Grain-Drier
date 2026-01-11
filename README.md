@@ -4,12 +4,6 @@ An embedded systems project demonstrating the use of a **Real-Time Operating Sys
 
 ---
 
-## Overview
-
-This project showcases how RTOS concepts such as multitasking, scheduling, and synchronization can be applied to a real-world grain drying system. The application integrates multiple sensors and motors, implemented in both **bare-metal** and **RTOS-based** environments for comparison and learning.
-
----
-
 ## Hardware Components
 
 - **LPC1768** – ARM Cortex-M3 Microcontroller  
