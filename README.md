@@ -1,44 +1,106 @@
-## RTOS Based Grain Drier 
+# RTOS-Based Grain Drier
 
-This project demonstrates the the use of RTOS in grain drying.The RTOS used is *RTL-RTX kernel* OS by *keil*.
-It is demonstared using LPC1768 board.The sensores used are:-
+![Platform](https://img.shields.io/badge/Platform-LPC1768-blue)
+![RTOS](https://img.shields.io/badge/RTOS-RTL--RTX-green)
+![IDE](https://img.shields.io/badge/IDE-Keil%20uVision%204-orange)
+![Language](https://img.shields.io/badge/Language-C-yellow)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
-1. DHT11 - To sense the room temperature.
-2. HW080 - Capacitive moisture sensor.
-3. A3144 - Hall effect sensor.
+An embedded systems project demonstrating the use of a **Real-Time Operating System (RTOS)** in a grain drying application using the **RTL-RTX kernel** on the **LPC1768 (ARM Cortex-M3)** microcontroller.
 
-To work this you need three source files:
+---
 
-1. RTX_Config_CM.c
-2. system_LPC177x.c
-3. system_LPC177x.s
+## Overview
 
-which are already provided in the repository.
+This project showcases how RTOS concepts such as multitasking, scheduling, and synchronization can be applied to a real-world grain drying system. The application integrates multiple sensors and motors, implemented in both **bare-metal** and **RTOS-based** environments for comparison and learning.
 
-The environment used is keil uvision 4. Follow the steps to get this work done.
+---
 
-1. Create a new project on keil uvision 4.You need to create a different project to know the working of each sensor.
-2. Select the file you want and add it to the target with the source files.To work on LCD add the >>lcd.h and >>lcd.s files.
-3. Go to options for target select the RTX Kernel.
+## Hardware Components
 
-### Below are the descriptions for each files:
+- **LPC1768** – ARM Cortex-M3 Microcontroller  
+- **DHT11** – Temperature sensor  
+- **HW080** – Capacitive moisture sensor  
+- **A3144** – Hall-effect sensor  
+- **DC Motor** – Airflow control  
+- **Stepper Motor** – Mechanical actuation  
+- **LCD Display** – User interface  
 
-1. DcMotor.c = To check DC Motor.
-2. dht11_OS.c = To check temperature sensor in OS environment.
-3. FanError_main.c = This is the main file.
-4. hall_sensor_os.c = To check the Hall effect sensor in OS environment.
-5. hall_sensor.c = To run the hall effect sensor in bare metal.
-6. lcd_interface_main.c = Integration of lcd with the all three sensors.* (Still in working phase)
-7. lcd.c = Source file to work on lcd.
-8. main_lcd.c = Integartion of lcd with temperature and moisture sensor.
-9. main.c = Integration of temperature and moisture sensor.
-10. moistLM393.c = To run the moist sensor in bare metal.
-11. RTX_Conf_CM.c = Source file for RTX kernel.
-12. sensor_dht11.c = To run the temperature sensor in bare metal.
-13. sensor_hw080_OS.c = To run the moist snsor in OS environment.
-14. SensorStepperDc.c = Integration of DC motor with stepper and all three sensors (Unoptimized version of FanError_main.c).
-15. stepper.c = To run the stepper motor in bare metal.
-16. StepperAndSenor_main.c = Integration of Stepper and Sensors in oS environment.
-17. system_LPC17xx.c = Source file for LPC1768.
-18. ThreeSensors_main.c = Integration of all sensors.
-19. system_LPC17xx.s = Source file for LPC1768.
+---
+
+## Software & Tools
+
+- **RTOS**: RTL-RTX Kernel (Keil)
+- **IDE**: Keil µVision 4
+- **Programming Language**: Embedded C
+- **Target MCU**: LPC1768
+
+---
+
+## Required System Files
+
+The following files are mandatory for RTOS operation and LPC1768 system initialization. They are already included in the repository:
+
+ `RTX_Config_CM.c`
+ `system_lpc17xx.c`
+ `system_lpc17xx.s`
+
+---
+
+## Setup Instructions (Keil µVision 4)
+
+1. Create a **new project** in Keil µVision 4.  
+   - It is recommended to create **separate projects** to understand each sensor individually.
+
+2. Add the required source file(s) along with:
+   - RTX configuration files
+   - LPC1768 system files
+
+3. For LCD functionality:
+   - Add `lcd.h`
+   - Add `lcd.s`
+
+4. Open **Options for Target**:
+   - Enable and select the **RTX Kernel**.
+
+5. Build the project and flash it to the LPC1768 board.
+
+---
+
+## Source File Descriptions
+
+| File Name | Description |
+|-----------|-------------|
+| `DcMotor.c` | DC motor testing |
+| `dht11_OS.c` | DHT11 temperature sensor (RTOS environment) |
+| `FanError_main.c` | **Main application file** |
+| `hall_sensor_os.c` | Hall-effect sensor (RTOS environment) |
+| `hall_sensor.c` | Hall-effect sensor (bare-metal) |
+| `lcd_interface_main.c` | LCD with all sensors *(work in progress)* |
+| `lcd.c` | LCD driver source file |
+| `main_lcd.c` | LCD integration with temperature and moisture sensors |
+| `main.c` | Temperature and moisture sensor integration |
+| `moistLM393.c` | Moisture sensor (bare-metal) |
+| `RTX_Conf_CM.c` | RTX kernel configuration |
+| `sensor_dht11.c` | DHT11 sensor (bare-metal) |
+| `sensor_hw080_OS.c` | Moisture sensor (RTOS environment) |
+| `SensorStepperDc.c` | DC motor + stepper + sensors *(unoptimized)* |
+| `stepper.c` | Stepper motor (bare-metal) |
+| `StepperAndSenor_main.c` | Stepper motor and sensors (RTOS) |
+| `system_LPC17xx.c` | LPC1768 system initialization |
+| `ThreeSensors_main.c` | Integration of all three sensors |
+| `system_LPC17xx.s` | LPC1768 startup assembly file |
+
+---
+
+## Notes
+
+- Both **bare-metal** and **RTOS-based** implementations are provided for comparison.
+- Some files are experimental or unoptimized and included for reference.
+- Ensure correct pin configuration as per the LPC1768 datasheet.
+
+---
+
+## License
+
+This project is intended for academic and learning purposes.
